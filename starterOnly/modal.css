@@ -17,7 +17,7 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  /* max-width: 1300px; */
   margin: 0 auto;
 }
 
@@ -436,23 +436,22 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 73px;
   padding: 0;
 }
 .btn-signup {
   outline: none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   font-size: 1.3rem;
   padding: 15px 23px;
-  margin: 0;
-  margin-top: 59px;
+  margin: 73px 0;
 }
 .hero-img {
   grid-column: span 8;
@@ -470,9 +469,22 @@ input[data-error]::after {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
+
 .hero-section > .btn-signup {
-  display: none;
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+  }
+
+@media screen and (min-width: 1024px){
+    .hero-section > .btn-signup {
+        /* display: none; */
+        position: absolute;
+        bottom: -10%;
+        left: 25%;
+    }   
 }
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
@@ -505,11 +517,6 @@ footer {
   .hero-img img {
     border-radius: 10px;
     margin-top: 40px;
-  }
-  .hero-section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
   }
   .copyrights {
     margin-top: 50px;

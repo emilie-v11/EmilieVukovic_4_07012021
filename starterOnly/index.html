@@ -1,36 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8" />
-    <title>Reservation</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Réservation</title>
+    
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!-- update link for font-awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+
+    <!-- link for modal CSS -->
+    <link rel="stylesheet" href="modal.css" />
 </head>
 
 <body>
-    <div class="topnav" id="myTopnav">
+    <!-- Start header -->
+    <header class="topnav" id="myTopnav">
         <div class="header-logo">
             <img alt="logo" src="Logo.png" width="auto" height="auto" />
         </div>
-        <div class="main-navbar">
-
+        <!-- Main nav-bar with links of navigation-->
+        <nav class="main-navbar">
             <a href="#" class="active"><span>Accueil</span></a>
             <a href="#"><span>Détails de l'évènement</span></a>
             <a href="#"><span>À propos</span></a>
             <a href="#"><span>Contact</span></a>
             <a href="#"><span>Évènements passés</span></a>
             <a href="javascript:void(0);" class="icon" onclick="editNav()">
+                <!-- navbar toggler icon - menu hidden in mobile version -->
                 <i class="fa fa-bars"></i>
             </a>
-        </div>
-    </div>
-    <!-- </div> -->
+        </nav>
+    </header>
+    <!-- End header -->
     
+    <!-- Start main -->
     <main>
-        <div class="hero-section">
+        <!-- Section hero -->
+        <section class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-headline">
                     Marathon national<br>
@@ -40,17 +51,22 @@
                     Vous aimez jouer ? Notre prochain évènement gaming est ouvert
                     aux réservations... Places limitées !
                 </p>
-                <button class="btn-signup modal-btn">
+                <!-- 
+                !! double button - maybe remove and modif css for place the button in mobile version 
+                -->
+                <!-- <button class="btn-signup modal-btn">
                     je m'inscris
-                </button>
+                </button> -->
             </div>
             <div class="hero-img">
                 <img src="./bg_img.jpg" alt="img" />
             </div>
+            
+            <!-- button call-to-action ==> access to modal form for sign-up -->
             <button class="btn-signup modal-btn">
-                je m'inscris
+                Je m'inscris
             </button>
-        </div>
+        </section>
 
         <div class="bground">
             <div class="content">
@@ -118,7 +134,7 @@
                             <input class="checkbox-input" type="checkbox" id="checkbox2" />
                             <label class="checkbox2-label" for="checkbox2">
                                 <span class="checkbox-icon"></span>
-                                Je Je souhaite être prévenu des prochains évènements.
+                                Je souhaite être prévenu des prochains évènements.
                             </label>
                             <br>
                         </div>
@@ -128,13 +144,17 @@
             </div>
         </div>
     </main>
+    <!-- End main -->
 
+    <!-- Start footer -->
     <footer>
         <p class="copyrights">
             Copyright 2014 - 2020, GameOn Inc.
         </p>
     </footer>
+    <!-- End footer -->
 
+    <!-- Link for madal JS -->
     <script src="modal.js"></script>
 
 </body>
