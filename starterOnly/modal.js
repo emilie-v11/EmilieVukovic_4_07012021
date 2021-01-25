@@ -1,21 +1,56 @@
-
-function editNav() {
-  const x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-
+//==============================================================================================
 // DOM Elements
+//================
+
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 
+//=======================================================
+// DOM elements Variable Form
+//================
 
-//change after delete the second button
+const mainForm = document.querySelector(".main-form");
+const firstName = document.querySelector("#first");
+const lastName = document.querySelector("#last");
+const email = document.querySelector("#email");
+const birthdate = document.querySelector("#birthdate");
+const quantity = document.querySelector("#quantity");
+const locations = document.getElementsByName("location");
+const cgu = document.querySelector("#checkbox1");
+const newsletter = document.querySelector("#checkbox2");
+const errorMessage = document.querySelectorAll(".errorMessage");
+const formDataInput = document.querySelectorAll(".formData input");
+
+//=======================================================
+// Variable RegExp
+//================
+
+let valid = true;
+let nameRegExp = /^([A-ZÀ-Ÿa-z]{2,})$/;
+let emailRegExp = /^([a-zA-Z0-9.]{1,})+@([a-zA-Z0-9-]{2,})+[.]+([a-zA-Z0-9-]{2,4})$/;
+// let birthdateRegExp = /^(\d{4})-(\d{2})-(\d{2})*$/;
+let birthdateRegExp = /^(\d{2}[/]\d{2}[/]\d{4})|(\d{4})-(\d{2})-(\d{2})$/;
+let quantityRegExp = /^([0-9]){1,2}$/;
+
+//==============================================================================================
+// Functions for TopNav responsive
+//=======================================================
+
+function editNav() {
+    const x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+          x.className += " responsive";
+      } else {
+          x.className = "topnav";
+      }
+  }
+  
+//==============================================================================================
+// Functions for launch & close modal / event
+//=======================================================
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -28,63 +63,73 @@ function launchModal() {
 modalCloseBtn.addEventListener("click", function() {
     modalbg.style.display = "none"; });
 
-//=============================================================
-// Variable Form DOM elements:
-let mainForm = document.querySelector(".main-form");
-let firstName = document.querySelector("#first");
-let lastName = document.querySelector("#last");
-let email = document.querySelector("#email");
-let birthdate = document.querySelector("#birthdate");
-let quantity = document.querySelector("#quantity");
-let locations = document.getElementsByName("location");
-let checkbox1 = document.querySelector("#checkbox1");
 
+//==============================================================================================
+// Functions for Check the input value in Form 
+//=============================================
 
-// Variable Regex
-let nameRegExp = /(^[A-ZÀ-Ÿa-z]+[-A-ZÀ-Ÿa-z]*)$/; // forbidden space between & after
-let emailRegExp = /^([a-zA-Z0-9.]{1,})+@([a-zA-Z0-9-]{2,})+[.]+([a-zA-Z0-9-]{2,4})$/;
-let birthdateRegExp = /(\d{4})-(\d{2})-(\d{2})/; // /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
-let quantityRegExp = /^([0-9]|[0-9]){1,2}$/;
+//variables & functions for error messages ================================
+let formDataArr = Array.from(formDataInput);
+let errorMessageArr = Array.from(errorMessage);
 
-// Functions for Check the input value in Form
+function errorMessageOn(index) {
+	errorMessageArr[index].classList.add("data-error");
+	formDataArr[index].classList.add("data-error-visible", true);
+};
+
+function errorMessageOff(index) {
+	errorMessageArr[index].classList.remove("data-error");
+	formDataArr[index].classList.remove("data-error-visible");
+};
+//==========================================================================
+
 function checkFirstName() {
-    if (!nameRegExp.test(firstName.value) || firstName.value.length < 2) {
-        return ("Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
+    if (!nameRegExp.test(firstName.value)) {
+        errorMessageOn(0);
+        return valid = false;
     } else {
-        return ("prénom ok");
+        errorMessageOff(0);
+        return valid = true;
     }
 }
 
 function checkLastName() {
-    if (!nameRegExp.test(lastName.value)|| lastName.value.length < 2) {
-        return ("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+    if (!nameRegExp.test(lastName.value)) {
+        errorMessageOn(1);
+        return valid = false;
     } else {
-        return ("nom ok");
+        errorMessageOff(1);
+        return valid = true;
     }
 }
 
 function checkEmail() {
     if (!emailRegExp.test(email.value)) {
-        return ("Veuillez entrer un email valide.");
+        errorMessageOn(2);
+        return valid = false;
     } else {
-        return ("email ok");
+        errorMessageOff(2);
+        return valid = true;
     }
 }
 
-// TODO change regex for birthdate between 1920<2008 ??
 function checkBirthdate() {
     if (!birthdateRegExp.test(birthdate.value)) {
-        return ("Veuillez entrer une date de naissance valide.");
+        errorMessageOn(3);
+        return valid = false;
     } else {
-        return ("date ok");
+        errorMessageOff(3);
+        return valid = true;
     }
 }
 
-function checkQuantity(value) {
+function checkQuantity() {
     if (!quantityRegExp.test(quantity.value)) {
-        return ("Veuillez entrer un chiffre entre 0 et 99.");
+        errorMessageOn(4);
+        return valid = false;
     } else {
-        return ("nombre ok");
+        errorMessageOff(4);
+        return valid = true;
     }
 }
 
@@ -93,50 +138,55 @@ function checkLocation() {
 
     for (let i = 0; i < locations.length; i++) {
         if(locations[i].checked) {
-        checkedCount++;
+            checkedCount++;
         }};
 
     if (checkedCount === 0) {
-        return ("Veuillez choisir une ville.");
+        errorMessageOn(5);
+        return valid = false;
     } else {
-        return ("ville ok");
+        errorMessageOff(5);
+        return valid = true;
     }
 }
 
-function checkCheckbox1() {
-    let checkedCount = checkbox1.checked;
+function checkCGU() {
+    let checkedCount = cgu.checked;
 
     if (!checkedCount) {
-        return ("Veuillez accepter les conditions d'utilisation.");
+        errorMessageOn(6);
+        return valid = false;
     } else {
-        return ("CGU ok");
+        errorMessageOff(6);
+        return valid = true;
     }
 }
 
-function checkCheckbox2() {
-    let checkedCount = checkbox2.checked;
+function checkNewsletter() {
+    let checkedCount = newsletter.checked;
 
     if (!checkedCount) {
-        return ("Vous ne souhaitez pas être prévenu des prochains évènements.");
+        return valid = true;
     } else {
-        return ("on vous prévient ok");
+        return valid = true;
     }
 }
 
-
+//==============================================================================================
 // Verification validity of the form on submit button
+//===================================================
+
 mainForm.addEventListener("submit", function(event) {
     event.preventDefault()
 
-    checkFirstName(firstName.value)
-    checkLastName(lastName.value)
-    checkEmail(email.value)
-    checkBirthdate(birthdate.value)
-    checkQuantity(quantity.value)
-    checkLocation(locations.value)
-    checkCheckbox1(checkbox1.value)
-    checkCheckbox2(checkbox1.value)
-
+    checkFirstName()
+    checkLastName()
+    checkEmail()
+    checkBirthdate()
+    checkQuantity()
+    checkLocation()
+    checkCGU()
+    checkNewsletter()
 
     console.log(checkFirstName(firstName.value));
     console.log(checkLastName(lastName.value));
@@ -144,7 +194,7 @@ mainForm.addEventListener("submit", function(event) {
     console.log(checkBirthdate(birthdate.value));
     console.log(checkQuantity(quantity.value));
     console.log(checkLocation(locations.value));
-    console.log(checkCheckbox1(checkbox1.value));
-    console.log(checkCheckbox2(checkbox1.value));
+    console.log(checkCGU(cgu.value));
+    console.log(checkNewsletter(checkbox1.value));
 })
 

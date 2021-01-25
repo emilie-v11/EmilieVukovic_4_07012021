@@ -61,30 +61,44 @@
                         <div class="formData">
                             <label for="first">Prénom</label><br>
                             <input class="text-control" type="text" id="first" name="first"/><br>
+                            <span role="alert" class="errorMessage error1" aria-hidden="true" >
+                                Veuillez entrer un prénom valide, 2 caractères ou plus.
+                            </span>
                         </div>
 
                         <div class="formData">
                             <label for="last">Nom</label><br>
                             <input class="text-control" type="text" id="last" name="last"/><br>
+                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                                Veuillez entrer un nom valide, 2 caractères ou plus.
+                            </span>
                         </div>
 
                         <div class="formData">
                             <label for="email">E-mail</label><br>
                             <input class="text-control" type="email" id="email" name="email"/><br>
+                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                                Veuillez entrer un email valide.
+                            </span>
                         </div>
 
                         <div class="formData">
                             <label for="birthdate">Date de naissance</label><br>
                             <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                                Veuillez entrer une date de naissance au format JJ/MM/AAAA.
+                            </span>
                         </div>
 
                         <div class="formData">
                             <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                            <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"> 
-                            <!-- min="0" max="99" -->
+                            <input type="number" class="text-control" id="quantity" name="quantity">
+                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                                Veuillez entrer un chiffre ou un nombre compris entre 0 et 99.
+                            </span>
                         </div>
 
-                        <p class="text-label">Quelles villes ?</p>
+                        <p class="text-label">Quelle ville ?</p>
                         <div class="formData">
                             <input class="checkbox-input" type="radio" id="location1" name="location"
                                 value="New York" />
@@ -113,17 +127,22 @@
                             <label class="checkbox-label" for="location6">
                                 <span class="checkbox-icon"></span>
                                 Portland</label>
+                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                                Veuillez choisir une ville.
+                            </span>
                         </div>
 
                         <div class="formData">
-                            <!-- Automatically checked by default -->
-                            <!-- checked ?? -->
+                            <!-- Not checked by default -->
                             <input class="checkbox-input" type="checkbox" id="checkbox1" />
                             <label class="checkbox2-label" for="checkbox1">
                                 <span class="checkbox-icon"></span>
                                 J'ai lu et accepté les conditions d'utilisation.
                             </label>
                             <br>
+                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                                Veuillez accepter les conditions d'utilisation.
+                            </span>
                             <!-- Not checked by default - not required -->
                             <input class="checkbox-input" type="checkbox" id="checkbox2" />
                             <label class="checkbox2-label" for="checkbox2">
