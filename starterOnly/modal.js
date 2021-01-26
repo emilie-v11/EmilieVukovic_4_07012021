@@ -28,7 +28,7 @@ const formDataInput = document.querySelectorAll(".formData input");
 //================
 
 let valid = true;
-let nameRegExp = /^([A-ZÀ-Ÿa-z]{2,})$/;
+let nameRegExp = /^([A-ZÀ-Ÿa-z-']{2,20})$/;
 let emailRegExp = /^([a-zA-Z0-9.]{1,})+@([a-zA-Z0-9-]{2,})+[.]+([a-zA-Z0-9-]{2,4})$/;
 // let birthdateRegExp = /^(\d{4})-(\d{2})-(\d{2})*$/;
 let birthdateRegExp = /^(\d{2}[/]\d{2}[/]\d{4})|(\d{4})-(\d{2})-(\d{2})$/;
@@ -176,8 +176,10 @@ function checkNewsletter() {
 // Verification validity of the form on submit button
 //===================================================
 
-mainForm.addEventListener("submit", function(event) {
-    event.preventDefault()
+const succesMessage = document.querySelector(".success-message");
+
+mainForm.addEventListener("submit", function(e) {
+    e.preventDefault()
 
     checkFirstName()
     checkLastName()
@@ -196,5 +198,12 @@ mainForm.addEventListener("submit", function(event) {
     console.log(checkLocation(locations.value));
     console.log(checkCGU(cgu.value));
     console.log(checkNewsletter(checkbox1.value));
+
+    if (formDataArr === false) {
+        return ("formulaire non valide")
+        e.preventDefault;
+    } else {
+
+    }
 })
 

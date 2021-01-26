@@ -188,7 +188,6 @@ main {
   margin: 15px auto;
 }
 /* ! */
-/* ! */
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -533,6 +532,23 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+.success-message {
+    display: none;
+    z-index: 99;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: #232323;
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    margin: 15px auto;
+    padding: 55% 20px;
 }
 
 
