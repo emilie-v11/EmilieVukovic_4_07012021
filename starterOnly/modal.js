@@ -109,51 +109,61 @@ function errorMessageOff(index) {
 function checkFirstName() {
     if (!nameRegExp.test(firstName.value)) {
         errorMessageOn(0);
-        return valid = false;
+        valid = false;
     } else {
+        valid;
         errorMessageOff(0);
-        return valid = true;
+        // return valid = true;
     }
-}
+    return valid; //ajout
+};
 
 function checkLastName() {
     if (!nameRegExp.test(lastName.value)) {
         errorMessageOn(1);
-        return valid = false;
+        valid = false;
     } else {
+        valid;
         errorMessageOff(1);
-        return valid = true;
+        // return valid = true;
     }
+    return valid; //ajout
 }
 
 function checkEmail() {
     if (!emailRegExp.test(email.value)) {
         errorMessageOn(2);
-        return valid = false;
+        valid = false;
     } else {
+        valid;
         errorMessageOff(2);
-        return valid = true;
+        // return valid = true;
     }
+    return valid; //ajout
 }
 
 function checkBirthdate() {
     if (!birthdateRegExp.test(birthdate.value)) {
         errorMessageOn(3);
-        return valid = false;
+        valid = false;
     } else {
+        valid;
         errorMessageOff(3);
-        return valid = true;
+        // return valid = true;
     }
+    return valid; //ajout
 }
 
 function checkQuantity() {
     if (!quantityRegExp.test(quantity.value)) {
         errorMessageOn(4);
-        return valid = false;
+        valid = false;
     } else {
+        valid;
         errorMessageOff(4);
-        return valid = true;
+        // return valid = true;
     }
+    return valid; //ajout
 }
 
 function checkLocation() {
@@ -166,11 +176,13 @@ function checkLocation() {
 
     if (checkedCount === 0) {
         errorMessageOn(5);
-        return valid = false;
+        valid = false;
     } else {
+        valid;
         errorMessageOff(5);
-        return valid = true;
+        // return valid = true;
     }
+    return valid; //ajout
 }
 
 function checkCGU() {
@@ -178,74 +190,101 @@ function checkCGU() {
 
     if (!checkedCount) {
         errorMessageOn(6);
-        return valid = false;
+        valid = false;
     } else {
+        valid;
         errorMessageOff(6);
-        return valid = true;
+        // return valid = true;
     }
+    return valid; //ajout
 }
 
 function checkNewsletter() {
     let checkedCount = newsletter.checked;
 
     if (!checkedCount) {
-        return valid = true;
+        valid = true;
     } else {
-        return valid = true;
+        valid;
+        // return valid = true;
     }
+    return valid; //ajout
 }
 
 //==============================================================================================
 // Verification validity of the form on submit button
 //===================================================
 
+mainForm.addEventListener("submit",function(e) {
+    e.preventDefault();
+    valid = true;
 
-mainForm.addEventListener("submit", function(e) {
-    e.preventDefault()
+    checkFirstName(firstName.value);
+    checkLastName(lastName.value);
+    checkEmail(email.value);
+    checkBirthdate(birthdate.value);
+    checkQuantity(quantity.value);
+    checkLocation(locations.value);
+    checkCGU(cgu.value);
+    // checkNewsletter(newsletter.value);
 
-    let checkFormArr = [
-        checkFirstName(firstName.value),
-        checkLastName(lastName.value),
-        checkEmail(email.value),
-        checkBirthdate(birthdate.value),
-        checkQuantity(quantity.value),
-        checkLocation(locations.value),
-        checkCGU(cgu.value),
-        checkNewsletter(newsletter.value)
-        ];
-        console.log(checkFormArr);
+    if(valid) {
+        modalSuccess.style.display = "block";
+    }
+    return valid;
 
-        if (!checkFormArr.value === false) {
-            modalSuccess.style.display = "block";
-            console.log("=====");
-        } else {
-            modalSuccess.style.display = "none";
-            console.log("+++++");
-        }
+// };
+});
 
-        // result = qd click btn form vide, apparition mess errors
-        //          mais qd form rempli mess error disparaissent,
-        //          mais pas ouverture modalSuccess.
-        // console = ((8) [false, false, false, false, false, false, false, true]
-        //          modal.js:223 +++++
-        //          modal.js:216 (8) [true, true, true, true, true, true, true, true]
-        //          modal.js:223 +++++
+
+
+// mainForm.addEventListener("submit", function(e) {
+//     e.preventDefault()
+
+//     let valid = true;
+//     let checkFormArr = [
+//         checkFirstName(firstName.value),
+//         checkLastName(lastName.value),
+//         checkEmail(email.value),
+//         checkBirthdate(birthdate.value),
+//         checkQuantity(quantity.value),
+//         checkLocation(locations.value),
+//         checkCGU(cgu.value),
+//         checkNewsletter(newsletter.value)
+//         ];
+//         console.log(checkFormArr);
+
+//         if (!checkFormArr.value === valid) {
+//             modalSuccess.style.display = "block";
+//             console.log("=====");
+//         } else {
+//             modalSuccess.style.display = "none";
+//             console.log("+++++");
+//         }
+
+//         // result = qd click btn form vide, apparition mess errors
+//         //          mais qd form rempli mess error disparaissent,
+//         //          mais pas ouverture modalSuccess.
+//         // console = ((8) [false, false, false, false, false, false, false, true]
+//         //          modal.js:223 +++++
+//         //          modal.js:216 (8) [true, true, true, true, true, true, true, true]
+//         //          modal.js:223 +++++
 
         
-    // console.log("=====");
-    // console.log(checkForm);
-    // console.log("=====");
-    // console.log(checkForm);
-    // console.log(checkFirstName(firstName.value));
-    // console.log(checkLastName(lastName.value));
-    // console.log(checkEmail(email.value));
-    // console.log(checkBirthdate(birthdate.value));
-    // console.log(checkQuantity(quantity.value));
-    // console.log(checkLocation(locations.value));
-    // console.log(checkCGU(cgu.value));
-    // console.log(checkNewsletter(newsletter.value));
+//     // console.log("=====");
+//     // console.log(checkForm);
+//     // console.log("=====");
+//     // console.log(checkForm);
+//     // console.log(checkFirstName(firstName.value));
+//     // console.log(checkLastName(lastName.value));
+//     // console.log(checkEmail(email.value));
+//     // console.log(checkBirthdate(birthdate.value));
+//     // console.log(checkQuantity(quantity.value));
+//     // console.log(checkLocation(locations.value));
+//     // console.log(checkCGU(cgu.value));
+//     // console.log(checkNewsletter(newsletter.value));
 
-});
+// });
 
     // if (formDataInput === false) {
     //     succesMessage.style.display = "block";
