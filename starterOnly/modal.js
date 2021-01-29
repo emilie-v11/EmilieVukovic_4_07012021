@@ -6,10 +6,9 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
-
-//=======================================================
-// DOM elements Variable Form
-//================
+const modalSuccess = document.querySelector(".modal-success");
+const successMessageBtn = document.querySelector(".btn-success");
+const modalCloseBtn2 = document.querySelector(".close2");
 
 const mainForm = document.querySelector(".main-form");
 const firstName = document.querySelector("#first");
@@ -26,11 +25,9 @@ const formDataInput = document.querySelectorAll(".formData input");
 //=======================================================
 // Variable RegExp
 //================
-
 let valid = true;
 let nameRegExp = /^([A-ZÀ-Ÿa-z-']{2,20})$/;
 let emailRegExp = /^([a-zA-Z0-9.]{1,})+@([a-zA-Z0-9-]{2,})+[.]+([a-zA-Z0-9-]{2,4})$/;
-// let birthdateRegExp = /^(\d{4})-(\d{2})-(\d{2})*$/;
 let birthdateRegExp = /^(\d{2}[/]\d{2}[/]\d{4})|(\d{4})-(\d{2})-(\d{2})$/;
 let quantityRegExp = /^([0-9]){1,2}$/;
 
@@ -59,9 +56,34 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// Close Modal Event and form
-modalCloseBtn.addEventListener("click", function() {
-    modalbg.style.display = "none"; });
+// Close modal & modal-success event
+// with Cross-sign-btn
+modalCloseBtn.addEventListener("click", closeModal);
+modalCloseBtn2.addEventListener("click", closeModal);
+// with btn
+successMessageBtn.addEventListener("click", closeModal);
+
+// Close modal form function
+function closeModal() {
+    modalbg.style.display = "none";
+}
+
+
+
+//Close modal event & form with Cross-sign-btn
+// modalCloseBtn.addEventListener("click", function() {
+//     modalbg.style.display = "none"; 
+// });
+
+// close modal-success with cross-sign-btn
+// modalCloseBtn2.addEventListener("click", function() {
+//     modalbg.style.display = "none"; 
+// });
+
+// Close success message with btn
+// successMessageBtn.addEventListener("click", function() {
+//     modalbg.style.display = "none";
+// });
 
 
 //==============================================================================================
@@ -74,13 +96,14 @@ let errorMessageArr = Array.from(errorMessage);
 
 function errorMessageOn(index) {
 	errorMessageArr[index].classList.add("data-error");
-	formDataArr[index].classList.add("data-error-visible", true);
+	formDataArr[index].classList.add("data-error-visible");
 };
 
 function errorMessageOff(index) {
 	errorMessageArr[index].classList.remove("data-error");
-	formDataArr[index].classList.remove("data-error-visible");
+	formDataArr[index].classList.remove("data-error-visible"); //( , true)
 };
+
 //==========================================================================
 
 function checkFirstName() {
@@ -176,34 +199,62 @@ function checkNewsletter() {
 // Verification validity of the form on submit button
 //===================================================
 
-const succesMessage = document.querySelector(".success-message");
 
 mainForm.addEventListener("submit", function(e) {
     e.preventDefault()
 
-    checkFirstName()
-    checkLastName()
-    checkEmail()
-    checkBirthdate()
-    checkQuantity()
-    checkLocation()
-    checkCGU()
-    checkNewsletter()
+    let checkFormArr = [
+        checkFirstName(firstName.value),
+        checkLastName(lastName.value),
+        checkEmail(email.value),
+        checkBirthdate(birthdate.value),
+        checkQuantity(quantity.value),
+        checkLocation(locations.value),
+        checkCGU(cgu.value),
+        checkNewsletter(newsletter.value)
+        ];
+        console.log(checkFormArr);
 
-    console.log(checkFirstName(firstName.value));
-    console.log(checkLastName(lastName.value));
-    console.log(checkEmail(email.value));
-    console.log(checkBirthdate(birthdate.value));
-    console.log(checkQuantity(quantity.value));
-    console.log(checkLocation(locations.value));
-    console.log(checkCGU(cgu.value));
-    console.log(checkNewsletter(checkbox1.value));
+        if (!checkFormArr.value === false) {
+            modalSuccess.style.display = "block";
+            console.log("=====");
+        } else {
+            modalSuccess.style.display = "none";
+            console.log("+++++");
+        }
 
-    if (formDataArr === false) {
-        return ("formulaire non valide")
-        e.preventDefault;
-    } else {
+        // result = qd click btn form vide, apparition mess errors
+        //          mais qd form rempli mess error disparaissent,
+        //          mais pas ouverture modalSuccess.
+        // console = ((8) [false, false, false, false, false, false, false, true]
+        //          modal.js:223 +++++
+        //          modal.js:216 (8) [true, true, true, true, true, true, true, true]
+        //          modal.js:223 +++++
 
-    }
-})
+        
+    // console.log("=====");
+    // console.log(checkForm);
+    // console.log("=====");
+    // console.log(checkForm);
+    // console.log(checkFirstName(firstName.value));
+    // console.log(checkLastName(lastName.value));
+    // console.log(checkEmail(email.value));
+    // console.log(checkBirthdate(birthdate.value));
+    // console.log(checkQuantity(quantity.value));
+    // console.log(checkLocation(locations.value));
+    // console.log(checkCGU(cgu.value));
+    // console.log(checkNewsletter(newsletter.value));
+
+});
+
+    // if (formDataInput === false) {
+    //     succesMessage.style.display = "block";
+       
+    // } else {
+    //     event.preventDefault()
+    // }
+    // console.log(formDataInput);
+    
+
+
 

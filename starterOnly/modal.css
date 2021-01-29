@@ -229,7 +229,7 @@ span.data-error {
   display: block;
 }
 
-.formData[data-error-visible="true"] .text-control,
+.formData[data-error-visible] .text-control,
 input.data-error-visible {
   border: 2px solid #e54858;
 }
@@ -303,7 +303,8 @@ input.data-error-visible[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+.close,
+.close2 {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -314,7 +315,7 @@ input.data-error-visible[data-error]::after {
   transform: scale(0.7);
 }
 .close:before,
-.close:after {
+.close:after{
   position: absolute;
   left: 15px;
   content: " ";
@@ -329,7 +330,8 @@ input.data-error-visible[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-success {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -534,9 +536,9 @@ footer {
   }
 }
 
-.success-message {
+.modal-success {
     display: none;
-    z-index: 99;
+    /* z-index: 99; */
     position: absolute;
     left: 0;
     top: 0;
@@ -549,6 +551,9 @@ footer {
     font-size: 2em;
     margin: 15px auto;
     padding: 55% 20px;
+    /* display: block; */
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 

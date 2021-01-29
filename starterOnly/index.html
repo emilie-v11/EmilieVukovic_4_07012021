@@ -61,7 +61,7 @@
                         <div class="formData">
                             <label for="first">Prénom</label><br>
                             <input class="text-control" type="text" id="first" name="first"/><br>
-                            <span role="alert" class="errorMessage error1" aria-hidden="true" >
+                            <span role="alert" class="errorMessage" aria-hidden="true" >
                                 Veuillez entrer un prénom valide, 2 caractères ou plus.
                             </span>
                         </div>
@@ -153,22 +153,19 @@
                         </div>
                         <!-- button for submit the reservation form -->
                         <input class="button btn-submit" type="submit" value="C'est parti" />
-
-                        <div class="modal-body success-message">
-                            <span class="close"></span>
-                            <p class="main-form" > 
-                                Félicitation !<br/> 
-                                Votre réservation a réussi !</p>
-                        </div>
                     </form>
                 </div>
-            </div>
-
-            <!-- <div class="content">
-                <span class="close"></span>
-                <div class="modal-body">
+                <div class="modal-success">
+                    <span class="close close2"></span>
+                    <div class="success-content">
+                        <p> 
+                            Félicitation !<br/> 
+                            Votre réservation a réussi !
+                        </p>
+                    </div>
+                    <input class="button btn-success" type="button" value="Fermer"/>
                 </div>
-            </div> -->
+            </div>
         </div>
     </main>
 
