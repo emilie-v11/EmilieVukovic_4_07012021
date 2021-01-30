@@ -66,6 +66,7 @@ modalCloseBtn.addEventListener("click", closeModal);
 function closeModal() {
     modalbg.style.display = "none";
 }
+
 //===============================================================
 // Close modal-success message
 // & reset form input
@@ -84,10 +85,8 @@ function closeModalSuccess() {
 }
 
 //==============================================================================================
-// Functions for Check the input value in Form 
-//=============================================
-
-//variables & functions for error messages ================================
+// Variables & functions for error messages
+//==========================================
 
 // Array with all form Input
 let formDataArr = Array.from(formDataInput);
@@ -118,7 +117,9 @@ function errorMessageOff(index) {
     formDataArr[index].classList.remove("data-error-visible");
 };
 
-//==========================================================================
+//=============================================
+// Functions for Check the input value in Form 
+//=============================================
 
 function checkFirstName() {
     if (!nameRegExp.test(firstName.value)) {
