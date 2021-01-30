@@ -88,19 +88,34 @@ function closeModalSuccess() {
 //=============================================
 
 //variables & functions for error messages ================================
-//
 
+// Array with all form Input
 let formDataArr = Array.from(formDataInput);
+
+// Array with all message error 
+// Inside <span class="error-message"></span>
 let errorMessageArr = Array.from(errorMessage);
 
+// Function Display error message when validation is not valid
 function errorMessageOn(index) {
-	errorMessageArr[index].classList.add("data-error");
+    // Add class="error-message" at span under input form
+    // & add style CSS for error message : display: block and color: red
+    errorMessageArr[index].classList.add("data-error");
+
+    // Add class="data-error-visible" at input form
+    // & add style CSS for error message : border-color: red
 	formDataArr[index].classList.add("data-error-visible");
 };
 
+// Function Hide error message when validation is valid
 function errorMessageOff(index) {
-	errorMessageArr[index].classList.remove("data-error");
-	formDataArr[index].classList.remove("data-error-visible"); //( , true)
+    // Remove class="error-message" in span 
+    // & remove style CSS for error message
+    errorMessageArr[index].classList.remove("data-error");
+
+    // Remove class="data-error-visible" in span
+    // & remove style CSS for error message
+    formDataArr[index].classList.remove("data-error-visible");
 };
 
 //==========================================================================
@@ -113,7 +128,7 @@ function checkFirstName() {
         valid;
         errorMessageOff(0);
     }
-    return valid; //ajout
+    return valid;
 };
 
 function checkLastName() {
@@ -124,7 +139,7 @@ function checkLastName() {
         valid;
         errorMessageOff(1);
     }
-    return valid; //ajout
+    return valid;
 }
 
 function checkEmail() {
@@ -135,7 +150,7 @@ function checkEmail() {
         valid;
         errorMessageOff(2);
     }
-    return valid; //ajout
+    return valid;
 }
 
 function checkBirthdate() {
@@ -146,7 +161,7 @@ function checkBirthdate() {
         valid;
         errorMessageOff(3);
     }
-    return valid; //ajout
+    return valid;
 }
 
 function checkQuantity() {
@@ -157,7 +172,7 @@ function checkQuantity() {
         valid;
         errorMessageOff(4);
     }
-    return valid; //ajout
+    return valid;
 }
 
 function checkLocation() {
@@ -175,7 +190,7 @@ function checkLocation() {
         valid;
         errorMessageOff(5);
     }
-    return valid; //ajout
+    return valid;
 }
 
 function checkCGU() {

@@ -187,7 +187,7 @@ main {
   padding: 15px 8%;
   margin: 15px auto;
 }
-/* ! */
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -211,9 +211,9 @@ input {
 /* .errorMessage {
     display: none;
 } */
-/* .formData[data-error]::after, */
+.formData[data-error]::after,
 span.errorMessage {
-  /* content: attr(data-error); */
+  content: attr(data-error);
   font-size: 0.5em;
   color: #e54858;
   display: none;
@@ -233,7 +233,7 @@ span.data-error {
 input.data-error-visible {
   border: 2px solid #e54858;
 }
-/*  */
+
 input.data-error-visible[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
