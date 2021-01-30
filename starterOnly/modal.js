@@ -45,52 +45,51 @@ function editNav() {
   }
   
 //==============================================================================================
-// Functions for launch & close modal / event
-//=======================================================
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+// Launch modal form
+//========================
 
 // launch modal form
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
 function launchModal() {
-  modalbg.style.display = "block";
+    modalbg.style.display = "block";
 }
 
-// Close modal & modal-success event
+//===============================================================
+// Close modal form
+// & without reset form input
+//===========================
+
 // with Cross-sign-btn
 modalCloseBtn.addEventListener("click", closeModal);
-modalCloseBtn2.addEventListener("click", closeModal);
-// with btn
-successMessageBtn.addEventListener("click", closeModal);
 
-// Close modal form function
 function closeModal() {
     modalbg.style.display = "none";
 }
+//===============================================================
+// Close modal-success message
+// & reset form input
+//===========================
 
+// with Cross-sign-btn: "X"
+modalCloseBtn2.addEventListener("click", closeModalSuccess);
 
+// with btn: "FERMER"
+successMessageBtn.addEventListener("click", closeModalSuccess);
 
-//Close modal event & form with Cross-sign-btn
-// modalCloseBtn.addEventListener("click", function() {
-//     modalbg.style.display = "none"; 
-// });
-
-// close modal-success with cross-sign-btn
-// modalCloseBtn2.addEventListener("click", function() {
-//     modalbg.style.display = "none"; 
-// });
-
-// Close success message with btn
-// successMessageBtn.addEventListener("click", function() {
-//     modalbg.style.display = "none";
-// });
-
+function closeModalSuccess() {
+    modalbg.style.display = "none";
+    modalSuccess.style.display = "none";
+    mainForm.reset();
+}
 
 //==============================================================================================
 // Functions for Check the input value in Form 
 //=============================================
 
 //variables & functions for error messages ================================
+//
+
 let formDataArr = Array.from(formDataInput);
 let errorMessageArr = Array.from(errorMessage);
 
@@ -113,7 +112,6 @@ function checkFirstName() {
     } else {
         valid;
         errorMessageOff(0);
-        // return valid = true;
     }
     return valid; //ajout
 };
@@ -125,7 +123,6 @@ function checkLastName() {
     } else {
         valid;
         errorMessageOff(1);
-        // return valid = true;
     }
     return valid; //ajout
 }
@@ -137,7 +134,6 @@ function checkEmail() {
     } else {
         valid;
         errorMessageOff(2);
-        // return valid = true;
     }
     return valid; //ajout
 }
@@ -149,7 +145,6 @@ function checkBirthdate() {
     } else {
         valid;
         errorMessageOff(3);
-        // return valid = true;
     }
     return valid; //ajout
 }
@@ -161,7 +156,6 @@ function checkQuantity() {
     } else {
         valid;
         errorMessageOff(4);
-        // return valid = true;
     }
     return valid; //ajout
 }
@@ -180,7 +174,6 @@ function checkLocation() {
     } else {
         valid;
         errorMessageOff(5);
-        // return valid = true;
     }
     return valid; //ajout
 }
@@ -194,25 +187,23 @@ function checkCGU() {
     } else {
         valid;
         errorMessageOff(6);
-        // return valid = true;
     }
-    return valid; //ajout
+    return valid;
 }
 
+// Not required
+// This input is valid when it's checked or not checked.
 function checkNewsletter() {
     let checkedCount = newsletter.checked;
-
-    if (!checkedCount) {
-        valid = true;
-    } else {
+    if (checkedCount || !checkedCount) {
         valid;
-        // return valid = true;
     }
-    return valid; //ajout
+    return valid;
 }
 
 //==============================================================================================
-// Verification validity of the form on submit button
+// Form validation on submit button
+// & open the modal with success message
 //===================================================
 
 mainForm.addEventListener("submit",function(e) {
@@ -226,74 +217,10 @@ mainForm.addEventListener("submit",function(e) {
     checkQuantity(quantity.value);
     checkLocation(locations.value);
     checkCGU(cgu.value);
-    // checkNewsletter(newsletter.value);
+    checkNewsletter(newsletter.value);
 
     if(valid) {
         modalSuccess.style.display = "block";
     }
-    return valid;
-
-// };
+    return valid;  
 });
-
-
-
-// mainForm.addEventListener("submit", function(e) {
-//     e.preventDefault()
-
-//     let valid = true;
-//     let checkFormArr = [
-//         checkFirstName(firstName.value),
-//         checkLastName(lastName.value),
-//         checkEmail(email.value),
-//         checkBirthdate(birthdate.value),
-//         checkQuantity(quantity.value),
-//         checkLocation(locations.value),
-//         checkCGU(cgu.value),
-//         checkNewsletter(newsletter.value)
-//         ];
-//         console.log(checkFormArr);
-
-//         if (!checkFormArr.value === valid) {
-//             modalSuccess.style.display = "block";
-//             console.log("=====");
-//         } else {
-//             modalSuccess.style.display = "none";
-//             console.log("+++++");
-//         }
-
-//         // result = qd click btn form vide, apparition mess errors
-//         //          mais qd form rempli mess error disparaissent,
-//         //          mais pas ouverture modalSuccess.
-//         // console = ((8) [false, false, false, false, false, false, false, true]
-//         //          modal.js:223 +++++
-//         //          modal.js:216 (8) [true, true, true, true, true, true, true, true]
-//         //          modal.js:223 +++++
-
-        
-//     // console.log("=====");
-//     // console.log(checkForm);
-//     // console.log("=====");
-//     // console.log(checkForm);
-//     // console.log(checkFirstName(firstName.value));
-//     // console.log(checkLastName(lastName.value));
-//     // console.log(checkEmail(email.value));
-//     // console.log(checkBirthdate(birthdate.value));
-//     // console.log(checkQuantity(quantity.value));
-//     // console.log(checkLocation(locations.value));
-//     // console.log(checkCGU(cgu.value));
-//     // console.log(checkNewsletter(newsletter.value));
-
-// });
-
-    // if (formDataInput === false) {
-    //     succesMessage.style.display = "block";
-       
-    // } else {
-    //     event.preventDefault()
-    // }
-    // console.log(formDataInput);
-    
-
-
-

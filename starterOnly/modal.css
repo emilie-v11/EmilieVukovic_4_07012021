@@ -535,7 +535,7 @@ footer {
     opacity: 1;
   }
 }
-
+/* Modal for message success */
 .modal-success {
     display: none;
     /* z-index: 99; */
@@ -550,27 +550,13 @@ footer {
     text-align: center;
     font-size: 2em;
     margin: 15px auto;
-    padding: 55% 20px;
-    /* display: block; */
-    /* display: flex; */
-    /* justify-content: center; */
+    padding: 50% 20px 10%;
 }
 
-
-/* essai pour error input */
-
-/* #nameError {
-    display: none;
-    font-size: 0.8em;
-    padding-left: 80px;
-    color: red;
-  }
-  
-  #nameError.visible {
-    display: block;
-  }
-  
-  input.invalid {
-    border-color: red;
-  } */
-  
+/* content for message success */
+.success-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
