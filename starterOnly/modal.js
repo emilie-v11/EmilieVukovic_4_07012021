@@ -19,16 +19,31 @@ const quantity = document.querySelector("#quantity");
 const locations = document.getElementsByName("location");
 const cgu = document.querySelector("#checkbox1");
 const newsletter = document.querySelector("#checkbox2");
+
 const errorMessage = document.querySelectorAll(".errorMessage");
 const formDataInput = document.querySelectorAll(".formData input");
 
 //=======================================================
-// Variable RegExp
-//================
+// Variable / Regular Expression
+//==============================
 let valid = true;
+
+// Regex rules allow: Capital, lowercase and accent's letters, hyphen, apostrophe.
+// & prohibit : numbers, specials characteres, spaces.      
 let nameRegExp = /^([A-ZÀ-Ÿa-z-']{2,20})$/;
-let emailRegExp = /^([a-zA-Z0-9.]{1,})+@([a-zA-Z0-9-]{2,})+[.]+([a-zA-Z0-9-]{2,4})$/;
-let birthdateRegExp = /^(\d{2}[/]\d{2}[/]\d{4})|(\d{4})-(\d{2})-(\d{2})$/;
+
+// Regex format : rules allow letters/numbers/dot {min-lenght 2} + [@]+ letters/numbers {min-lenght 2} + [.] + letters {min-lenght 2,20}
+let emailRegExp = /^([a-zA-Z0-9.]{2,})+@([a-zA-Z0-9.]{2,})+[.]+([a-zA-Z0-9-]{2,20})$/;
+
+//  Regex just for format JJ/MM/AAAA - unlimited age.
+// let birthdateRegExp = /^(\d{2}[/]\d{2}[/]\d{4})|(\d{4})-(\d{2})-(\d{2})$/;
+
+// Regex for format JJ/MM/AAAA and year of birth = 1930 < 2009 for valid birthdate.
+// Just numbers.
+let birthdateRegExp = /^((19[3-9]+[0-9]|200[0-9])-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])|(0?[1-9]|[12]\d|3[01])[/](0?[1-9]|1[0-2])[/](19[3-9]+[0-9]|200[0-6]))$/;
+
+// Regex for number 0 to 99.
+// Just numbers.
 let quantityRegExp = /^([0-9]){1,2}$/;
 
 //==============================================================================================
@@ -176,7 +191,7 @@ function checkQuantity() {
     return valid;
 }
 
-function checkLocation() {
+function checkLocations() {
     let checkedCount = 0;
 
     for (let i = 0; i < locations.length; i++) {
@@ -231,7 +246,7 @@ mainForm.addEventListener("submit",function(e) {
     checkEmail(email.value);
     checkBirthdate(birthdate.value);
     checkQuantity(quantity.value);
-    checkLocation(locations.value);
+    checkLocations(locations.value);
     checkCGU(cgu.value);
     checkNewsletter(newsletter.value);
 
