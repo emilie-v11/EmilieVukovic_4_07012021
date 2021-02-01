@@ -59,7 +59,7 @@
                         <div class="formData">
                             <label for="first">Prénom</label><br>
                             <input class="text-control" type="text" id="first" name="first"/><br>
-                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                            <span role="alert" class="error-message error-first" aria-hidden="true" >
                                 Veuillez entrer un prénom valide, 2 caractères ou plus.
                             </span>
                         </div>
@@ -67,7 +67,7 @@
                         <div class="formData">
                             <label for="last">Nom</label><br>
                             <input class="text-control" type="text" id="last" name="last"/><br>
-                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                            <span role="alert" class="error-message error-last" aria-hidden="true" >
                                 Veuillez entrer un nom valide, 2 caractères ou plus.
                             </span>
                         </div>
@@ -75,7 +75,7 @@
                         <div class="formData">
                             <label for="email">E-mail</label><br>
                             <input class="text-control" type="email" id="email" name="email"/><br>
-                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                            <span role="alert" class="error-message error-email" aria-hidden="true" >
                                 Veuillez entrer un email valide.
                             </span>
                         </div>
@@ -83,7 +83,7 @@
                         <div class="formData">
                             <label for="birthdate">Date de naissance</label><br>
                             <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
-                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                            <span role="alert" class="error-message error-birthdate" aria-hidden="true" >
                                 Veuillez entrer une date de naissance au format JJ/MM/AAAA.
                             </span>
                         </div>
@@ -91,7 +91,7 @@
                         <div class="formData">
                             <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                             <input type="number" class="text-control" id="quantity" name="quantity">
-                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                            <span role="alert" class="error-message error-quantity" aria-hidden="true" >
                                 Veuillez entrer un chiffre ou un nombre compris entre 0 et 99.
                             </span>
                         </div>
@@ -125,7 +125,7 @@
                             <label class="checkbox-label" for="location6">
                                 <span class="checkbox-icon"></span>
                                 Portland</label>
-                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                            <span role="alert" class="error-message error-locations" aria-hidden="true" >
                                 Veuillez choisir une ville.
                             </span>
                         </div>
@@ -138,7 +138,7 @@
                                 J'ai lu et accepté les conditions d'utilisation.
                             </label>
                             <br>
-                            <span role="alert" class="errorMessage" aria-hidden="true" >
+                            <span role="alert" class="error-message error-cgu" aria-hidden="true" >
                                 Veuillez accepter les conditions d'utilisation.
                             </span>
                             <!-- Not checked by default - not required -->
