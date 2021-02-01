@@ -48,14 +48,17 @@ let quantityRegExp = /^([0-9]){1,2}$/;
 
 //==============================================================================================
 // Functions for TopNav responsive
-//=======================================================
+//========================
 
 function editNav() {
     const x = document.getElementById("myTopnav");
+    const iconTopNav = document.querySelector(".fa-bars");
       if (x.className === "topnav") {
           x.className += " responsive";
+          iconTopNav.style.color = "transparent";
       } else {
           x.className = "topnav";
+          iconTopNav.style.color = "#FE142F";
       }
   }
   
