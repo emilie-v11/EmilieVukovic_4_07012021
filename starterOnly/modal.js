@@ -111,7 +111,7 @@ let formDataArr = Array.from(formDataInput);
 let errorMessageArr = Array.from(errorMessage);
 
 // Function Display error message when validation is not valid
-function errorMessageOn(index) {
+function displayErrorMessage(index) {
     // Add class="error-message" at span under input form
     // & add style CSS for error message : display: block and color: red
     errorMessageArr[index].classList.add("data-error");
@@ -122,7 +122,7 @@ function errorMessageOn(index) {
 };
 
 // Function Hide error message when validation is valid
-function errorMessageOff(index) {
+function hideErrorMessage(index) {
     // Remove class="error-message" in span 
     // & remove style CSS for error message
     errorMessageArr[index].classList.remove("data-error");
@@ -138,55 +138,55 @@ function errorMessageOff(index) {
 
 function checkFirstName() {
     if (!nameRegExp.test(firstName.value)) {
-        errorMessageOn(0);
+        displayErrorMessage(0);
         valid = false;
     } else {
         valid;
-        errorMessageOff(0);
+        hideErrorMessage(0);
     }
     return valid;
 };
 
 function checkLastName() {
     if (!nameRegExp.test(lastName.value)) {
-        errorMessageOn(1);
+        displayErrorMessage(1);
         valid = false;
     } else {
         valid;
-        errorMessageOff(1);
+        hideErrorMessage(1);
     }
     return valid;
 }
 
 function checkEmail() {
     if (!emailRegExp.test(email.value)) {
-        errorMessageOn(2);
+        displayErrorMessage(2);
         valid = false;
     } else {
         valid;
-        errorMessageOff(2);
+        hideErrorMessage(2);
     }
     return valid;
 }
 
 function checkBirthdate() {
     if (!birthdateRegExp.test(birthdate.value)) {
-        errorMessageOn(3);
+        displayErrorMessage(3);
         valid = false;
     } else {
         valid;
-        errorMessageOff(3);
+        hideErrorMessage(3);
     }
     return valid;
 }
 
 function checkQuantity() {
     if (!quantityRegExp.test(quantity.value)) {
-        errorMessageOn(4);
+        displayErrorMessage(4);
         valid = false;
     } else {
         valid;
-        errorMessageOff(4);
+        hideErrorMessage(4);
     }
     return valid;
 }
@@ -200,11 +200,11 @@ function checkLocations() {
         }};
 
     if (checkedCount === 0) {
-        errorMessageOn(5);
+        displayErrorMessage(5);
         valid = false;
     } else {
         valid;
-        errorMessageOff(5);
+        hideErrorMessage(5);
     }
     return valid;
 }
@@ -213,11 +213,11 @@ function checkCGU() {
     let checkedCount = cgu.checked;
 
     if (!checkedCount) {
-        errorMessageOn(6);
+        displayErrorMessage(6);
         valid = false;
     } else {
         valid;
-        errorMessageOff(6);
+        hideErrorMessage(6);
     }
     return valid;
 }
