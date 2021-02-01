@@ -187,8 +187,7 @@ main {
   padding: 15px 8%;
   margin: 15px auto;
 }
-/* ! */
-/* ! */
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -212,9 +211,9 @@ input {
 /* .errorMessage {
     display: none;
 } */
-/* .formData[data-error]::after, */
+.formData[data-error]::after,
 span.errorMessage {
-  /* content: attr(data-error); */
+  content: attr(data-error);
   font-size: 0.5em;
   color: #e54858;
   display: none;
@@ -230,11 +229,11 @@ span.data-error {
   display: block;
 }
 
-.formData[data-error-visible="true"] .text-control,
+.formData[data-error-visible] .text-control,
 input.data-error-visible {
   border: 2px solid #e54858;
 }
-/*  */
+
 input.data-error-visible[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -304,7 +303,8 @@ input.data-error-visible[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+.close,
+.close2 {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -315,7 +315,7 @@ input.data-error-visible[data-error]::after {
   transform: scale(0.7);
 }
 .close:before,
-.close:after {
+.close:after{
   position: absolute;
   left: 15px;
   content: " ";
@@ -330,7 +330,8 @@ input.data-error-visible[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-success {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -534,22 +535,28 @@ footer {
     opacity: 1;
   }
 }
-
-
-/* essai pour error input */
-
-/* #nameError {
+/* Modal for message success */
+.modal-success {
     display: none;
-    font-size: 0.8em;
-    padding-left: 80px;
-    color: red;
-  }
-  
-  #nameError.visible {
-    display: block;
-  }
-  
-  input.invalid {
-    border-color: red;
-  } */
-  
+    /* z-index: 99; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: #232323;
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    margin: 15px auto;
+    padding: 50% 20px 10%;
+}
+
+/* content for message success */
+.success-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
