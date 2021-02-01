@@ -9,6 +9,8 @@ const modalCloseBtn = document.querySelector(".close");
 const modalSuccess = document.querySelector(".modal-success");
 const successMessageBtn = document.querySelector(".btn-success");
 const modalCloseBtn2 = document.querySelector(".close2");
+const x = document.getElementById("myTopnav");
+const iconTopNav = document.querySelector(".fa-bars");
 
 const mainForm = document.querySelector(".main-form");
 const firstName = document.querySelector("#first");
@@ -51,8 +53,6 @@ let quantityRegExp = /^([0-9]){1,2}$/;
 //========================
 
 function editNav() {
-    const x = document.getElementById("myTopnav");
-    const iconTopNav = document.querySelector(".fa-bars");
       if (x.className === "topnav") {
           x.className += " responsive";
           iconTopNav.style.color = "transparent";

@@ -91,6 +91,7 @@ img {
         color: #FE142F;
         background: none;
         font-size: 40px;
+        border: none;
     }
 }
 
@@ -154,6 +155,10 @@ main {
     background: #3876ac;
 }
 
+.hero-content .modal-btn {
+    font-size: 25px;
+}
+
 .footer {
     margin: 20px;
     padding: 10px;
@@ -169,7 +174,7 @@ main {
     color: #fff;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .button:hover {
@@ -492,7 +497,7 @@ input.data-error-visible[data-error]::after {
 }
 
 .hero-headline {
-    font-size: 6rem;
+    font-size: 96px;
     font-weight: normal;
     white-space: nowrap;
     padding-top: 53px;
@@ -503,6 +508,7 @@ input.data-error-visible[data-error]::after {
     font-weight: normal;
     margin-top: 57px;
     padding: 0;
+    font-size: 24px;
 }
 
 .btn-signup {
@@ -580,13 +586,13 @@ footer {
     }
 
     .hero-headline {
-        font-size: 4.5rem;
+        font-size: 5rem;
         white-space: normal;
     }
 
     .hero-text {
         width: unset;
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     .hero-img img {
@@ -603,6 +609,34 @@ footer {
     .copyrights {
         margin-top: 50px;
         text-align: center;
+    }
+}
+
+@media screen and (max-width:767px ) {
+    .hero-headline {
+        font-size: 60px;
+        white-space: normal;
+    }
+
+    .hero-text {
+        width: unset;
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width:560px ) {
+    .hero-content{
+        min-width: 0;
+    }
+    .hero-headline {
+        width: unset;
+        font-size: 38px;
+        padding-top: 20px;
+    }
+
+    .hero-text {
+        margin-top: 35px;
+        font-size: 13px;
     }
 }
 
