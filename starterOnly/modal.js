@@ -167,12 +167,12 @@ function checkLocations() {
         }
     }
 
-    const isCheckCountValid = checkedCount >= 0
+    const isCheckCountValid = checkedCount > 0;
 
     if (isCheckCountValid) {
-        errorMessageLocations.style.display = "block";
-    } else {
         errorMessageLocations.style.display = "none";
+    } else {
+        errorMessageLocations.style.display = "block";
     }
 
     return isCheckCountValid;
@@ -197,16 +197,23 @@ function checkCGU() {
  */
 modalBtn.forEach((btn) => btn.addEventListener("click", displayModal));
 
+modalCloseBtn.addEventListener("click", closeModal);
+
 modalCloseBtn2.addEventListener("click", closeModalSuccess);
 
 successMessageBtn.addEventListener("click", closeModalSuccess);
 
-modalCloseBtn.addEventListener("click", closeModal);
-
 mainForm.addEventListener("submit",function(e) {
     e.preventDefault();
+    const isFormValid = checkFirstName() && checkLastName() && checkEmail() && checkBirthdate() && checkQuantity() && checkLocations() && checkCGU();
 
-    const isFormValid = checkFirstName() && checkLastName() && checkEmail() && checkBirthdate() && checkQuantity() && checkLocations() && checkCGU()
+    checkFirstName();
+    checkLastName();
+    checkEmail();
+    checkBirthdate();
+    checkQuantity();
+    checkLocations();
+    checkCGU();
 
     if(isFormValid) {
         modalSuccess.style.display = "block";

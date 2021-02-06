@@ -80,49 +80,7 @@ img {
     display: none;
 }
 
-@media screen and (max-width: 992px) {
-    .topnav a {
-        display: none;
-    }
 
-    .topnav a.icon {
-        float: right;
-        display: block;
-        color: #FE142F;
-        background: none;
-        font-size: 40px;
-        border: none;
-    }
-}
-
-@media screen and (max-width: 992px) {
-    .topnav.responsive {
-        position: relative;
-    }
-
-    .topnav.responsive .icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-}
-
-@media screen and (max-width: 540px) {
-    .topnav a {
-        display: none;
-    }
-
-    .topnav a.icon {
-        float: right;
-        display: block;
-    }
-}
 
 main {
     font-size: 130%;
@@ -134,8 +92,6 @@ main {
     margin: 1px 20px 15px;
     border-radius: 2rem;
     text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -238,10 +194,6 @@ input {
     height: 48px;
 }
 
-/* .errorMessage {
-    display: none;
-} */
-
 /* .formData[data-error]::after, */
 span.error-message {
     content: attr(data-error);
@@ -279,7 +231,6 @@ span.error-message {
     min-height: 100%;
 }
 
-/* add */
 /* span.data-error {
     display: block;
 } */
@@ -543,23 +494,6 @@ input.data-error-visible {
     margin-top: 59px;
 }
 
-@media screen and (min-width: 1024px) {
-    .hero-headline {
-        padding-top: 53px;
-    }
-
-    .hero-text {
-        margin-top: 35%;
-        margin-bottom: 40%;
-    }
-
-    .btn-signup {
-    position: absolute;
-    /* bottom: 70px; */
-    bottom: 10%;
-    }
-}
-
 .hero-img {
     grid-column: span 8;
 }
@@ -587,6 +521,67 @@ footer {
     padding-left: 2vw;
     padding-right: 2vw;
     margin: 0 20px;
+}
+
+@media screen and (max-width: 992px) {
+    .topnav a {
+        display: none;
+    }
+
+    .topnav a.icon {
+        float: right;
+        display: block;
+        color: #FE142F;
+        background: none;
+        font-size: 40px;
+        border: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .topnav.responsive {
+        position: relative;
+    }
+
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .topnav a {
+        display: none;
+    }
+
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .hero-headline {
+        padding-top: 53px;
+    }
+
+    .hero-text {
+        margin-top: 35%;
+        margin-bottom: 40%;
+    }
+
+    .btn-signup {
+    position: absolute;
+    /* bottom: 70px; */
+    bottom: 10%;
+    }
 }
 
 @media screen and (max-width: 1023px) {
@@ -674,4 +669,3 @@ footer {
         opacity: 1;
     }
 }
-
