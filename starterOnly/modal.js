@@ -1,100 +1,78 @@
-//==============================================================================================
-// DOM Elements
-//================
-
+/**
+ * DOM Elements
+ */
+const formData = document.querySelectorAll(".formData");
+const iconTopNav = document.querySelector(".fa-bars");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
+const modalCloseBtn2 = document.querySelector(".close2");
 const modalSuccess = document.querySelector(".modal-success");
 const successMessageBtn = document.querySelector(".btn-success");
-const modalCloseBtn2 = document.querySelector(".close2");
 const x = document.getElementById("myTopnav");
-const iconTopNav = document.querySelector(".fa-bars");
 
-const mainForm = document.querySelector(".main-form");
-const firstName = document.querySelector("#first");
-const lastName = document.querySelector("#last");
-const email = document.querySelector("#email");
-const birthdate = document.querySelector("#birthdate");
-const quantity = document.querySelector("#quantity");
-const locations = document.getElementsByName("location");
-const cgu = document.querySelector("#checkbox1");
-const newsletter = document.querySelector("#checkbox2");
-
-const errorMessage = document.querySelectorAll(".errorMessage");
+const birthdateInput = document.querySelector("#birthdate");
+const cguCheckbox = document.querySelector("#checkbox1");
+const emailInput = document.querySelector("#email");
+const firstNameInput = document.querySelector("#first");
 const formDataInput = document.querySelectorAll(".formData input");
+const lastNameInput = document.querySelector("#last");
+const locationsRadio = document.getElementsByName("location");
+const mainForm = document.querySelector(".main-form");
+const quantityInput = document.querySelector("#quantity");
 
-//=======================================================
-// Variable / Regular Expression
-//==============================
-let valid = true;
+const errorMessage = document.querySelector(".error-message");
+const errorMessageBirthdate = document.querySelector(".error-birthdate");
+const errorMessageCGU = document.querySelector(".error-cgu");
+const errorMessageEmail = document.querySelector(".error-email");
+const errorMessageFirst = document.querySelector(".error-first");
+const errorMessageLast = document.querySelector(".error-last");
+const errorMessageLocations = document.querySelector(".error-locations");
+const errorMessageQuantity = document.querySelector(".error-quantity");
 
+
+/**
+ * REGEX
+ */
 // Regex rules allow: Capital, lowercase and accent's letters, hyphen, apostrophe.
 // & prohibit : numbers, specials characteres, spaces.      
-let nameRegExp = /^([A-ZÀ-Ÿa-z-']{2,20})$/;
+const nameRegExp = /^([A-ZÀ-Ÿa-z-']{2,20})$/;
 
 // Regex format : rules allow letters/numbers/dot {min-lenght 2} + [@]+ letters/numbers {min-lenght 2} + [.] + letters {min-lenght 2,20}
-let emailRegExp = /^([a-zA-Z0-9.]{2,})+@([a-zA-Z0-9.]{2,})+[.]+([a-zA-Z0-9-]{2,20})$/;
-
-//  Regex just for format JJ/MM/AAAA - unlimited age.
-// let birthdateRegExp = /^(\d{2}[/]\d{2}[/]\d{4})|(\d{4})-(\d{2})-(\d{2})$/;
+const emailRegExp = /^([a-zA-Z0-9.]{2,})+@([a-zA-Z0-9.]{2,})+[.]+([a-zA-Z0-9-]{2,20})$/;
 
 // Regex for format JJ/MM/AAAA and year of birth = 1930 < 2009 for valid birthdate.
 // Just numbers.
-let birthdateRegExp = /^((19[3-9]+[0-9]|200[0-9])-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])|(0?[1-9]|[12]\d|3[01])[/](0?[1-9]|1[0-2])[/](19[3-9]+[0-9]|200[0-6]))$/;
+const birthdateRegExp = /^((19[3-9]+[0-9]|200[0-9])-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])|(0?[1-9]|[12]\d|3[01])[/](0?[1-9]|1[0-2])[/](19[3-9]+[0-9]|200[0-6]))$/;
 
 // Regex for number 0 to 99.
 // Just numbers.
-let quantityRegExp = /^([0-9]){1,2}$/;
+const quantityRegExp = /^([0-9]){1,2}$/;
 
-//==============================================================================================
-// Functions for TopNav responsive
-//========================
 
+/**
+ * Functions related to display and layouts
+ */
 function editNav() {
-      if (x.className === "topnav") {
-          x.className += " responsive";
-          iconTopNav.style.color = "transparent";
-      } else {
-          x.className = "topnav";
-          iconTopNav.style.color = "#FE142F";
-      }
-  }
-  
-//==============================================================================================
-// Launch modal form
-//========================
+    if (x.className === "topnav") {
+        x.className += " responsive";
+        iconTopNav.style.color = "transparent";
+    } else {
+        x.className = "topnav";
+        iconTopNav.style.color = "#FE142F";
+    }
+}
 
-// launch modal form
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-function launchModal() {
+function displayModal() {
     modalbg.style.display = "block";
 }
 
-//===============================================================
-// Close modal form
-// & without reset form input
-//===========================
-
-// with Cross-sign-btn
-modalCloseBtn.addEventListener("click", closeModal);
 
 function closeModal() {
     modalbg.style.display = "none";
 }
 
-//===============================================================
-// Close modal-success message
-// & reset form input
-//===========================
-
-// with Cross-sign-btn: "X"
-modalCloseBtn2.addEventListener("click", closeModalSuccess);
-
-// with btn: "FERMER"
-successMessageBtn.addEventListener("click", closeModalSuccess);
 
 function closeModalSuccess() {
     modalbg.style.display = "none";
@@ -102,159 +80,135 @@ function closeModalSuccess() {
     mainForm.reset();
 }
 
-//==============================================================================================
-// Variables & functions for error messages
-//==========================================
 
-// Array with all form Input
-let formDataArr = Array.from(formDataInput);
-
-// Array with all message error 
-// Inside <span class="error-message"></span>
-let errorMessageArr = Array.from(errorMessage);
-
-// Function Display error message when validation is not valid
-function displayErrorMessage(index) {
-    // Add class="error-message" at span under input form
-    // & add style CSS for error message : display: block and color: red
-    errorMessageArr[index].classList.add("data-error");
-
-    // Add class="data-error-visible" at input form
-    // & add style CSS for error message : border-color: red
-	formDataArr[index].classList.add("data-error-visible");
-};
-
-// Function Hide error message when validation is valid
-function hideErrorMessage(index) {
-    // Remove class="error-message" in span 
-    // & remove style CSS for error message
-    errorMessageArr[index].classList.remove("data-error");
-
-    // Remove class="data-error-visible" in span
-    // & remove style CSS for error message
-    formDataArr[index].classList.remove("data-error-visible");
-};
-
-//=============================================
-// Functions for Check the input value in Form 
-//=============================================
-
+/**
+ * Functions related to check form
+ */
 function checkFirstName() {
-    if (!nameRegExp.test(firstName.value)) {
-        displayErrorMessage(0);
-        valid = false;
+    const isFirstNameCorrect = nameRegExp.test(firstNameInput.value)
+
+    if (isFirstNameCorrect) {
+        errorMessageFirst.style.display = "none";
+        firstNameInput.style.border = "none";
     } else {
-        valid;
-        hideErrorMessage(0);
+        errorMessageFirst.style.display = "block";
+        firstNameInput.style.border = "red 2px solid";
     }
-    return valid;
-};
+    
+    return isFirstNameCorrect
+}
+
 
 function checkLastName() {
-    if (!nameRegExp.test(lastName.value)) {
-        displayErrorMessage(1);
-        valid = false;
+    const isLastNameCorrect = nameRegExp.test(lastNameInput.value)
+
+    if (isLastNameCorrect) {
+        errorMessageLast.style.display = "none";
+        lastNameInput.style.border = "none";        
     } else {
-        valid;
-        hideErrorMessage(1);
+        errorMessageLast.style.display = "block";
+        lastNameInput.style.border = "red 2px solid";
     }
-    return valid;
+
+    return isLastNameCorrect
 }
+
 
 function checkEmail() {
-    if (!emailRegExp.test(email.value)) {
-        displayErrorMessage(2);
-        valid = false;
+    const isEmailCorrect = emailRegExp.test(emailInput.value)
+
+    if (isEmailCorrect) {
+        errorMessageEmail.style.display = "none";
+        emailInput.style.border = "none";
     } else {
-        valid;
-        hideErrorMessage(2);
+        errorMessageEmail.style.display = "block";
+        emailInput.style.border = "red 2px solid";
     }
-    return valid;
-}
+    
+    return isEmailCorrect;
+};
 
 function checkBirthdate() {
-    if (!birthdateRegExp.test(birthdate.value)) {
-        displayErrorMessage(3);
-        valid = false;
+    const isBirthdateCorrect = birthdateRegExp.test(birthdateInput.value)
+
+    if (isBirthdateCorrect) {
+        errorMessageBirthdate.style.display = "none";
+        birthdateInput.style.border = "none";        
     } else {
-        valid;
-        hideErrorMessage(3);
+        errorMessageBirthdate.style.display = "block";
+        birthdateInput.style.border = "red 2px solid";
     }
-    return valid;
+
+    return isBirthdateCorrect;
 }
 
+
 function checkQuantity() {
-    if (!quantityRegExp.test(quantity.value)) {
-        displayErrorMessage(4);
-        valid = false;
+    const isQuantityValid = quantityRegExp.test(quantityInput.value)
+
+    if (isQuantityValid) {
+        errorMessageQuantity.style.display = "none";
+        quantityInput.style.border = "none";        
     } else {
-        valid;
-        hideErrorMessage(4);
+        errorMessageQuantity.style.display = "block";
+        quantityInput.style.border = "red 2px solid";
     }
-    return valid;
+    
+    return isQuantityValid;
 }
+
 
 function checkLocations() {
     let checkedCount = 0;
 
-    for (let i = 0; i < locations.length; i++) {
-        if(locations[i].checked) {
+    for (let i = 0; i < locationsRadio.length; i++) {
+        if(locationsRadio[i].checked) {
             checkedCount++;
-        }};
-
-    if (checkedCount === 0) {
-        displayErrorMessage(5);
-        valid = false;
-    } else {
-        valid;
-        hideErrorMessage(5);
+        }
     }
-    return valid;
+
+    const isCheckCountValid = checkedCount >= 0
+
+    if (isCheckCountValid) {
+        errorMessageLocations.style.display = "block";
+    } else {
+        errorMessageLocations.style.display = "none";
+    }
+
+    return isCheckCountValid;
 }
+
 
 function checkCGU() {
-    let checkedCount = cgu.checked;
+    const isCGUChecked = cguCheckbox.checked;
 
-    if (!checkedCount) {
-        displayErrorMessage(6);
-        valid = false;
+    if (isCGUChecked) {
+        errorMessageCGU.style.display = "none";        
     } else {
-        valid;
-        hideErrorMessage(6);
+        errorMessageCGU.style.display = "block";
     }
-    return valid;
+
+    return isCGUChecked;
 }
 
-// Not required
-// This input is valid when it's checked or not checked.
-function checkNewsletter() {
-    let checkedCount = newsletter.checked;
-    if (checkedCount || !checkedCount) {
-        valid;
-    }
-    return valid;
-}
 
-//==============================================================================================
-// Form validation on submit button
-// & open the modal with success message
-//===================================================
+/**
+ * Event Listeners
+ */
+modalBtn.forEach((btn) => btn.addEventListener("click", displayModal));
+
+modalCloseBtn2.addEventListener("click", closeModalSuccess);
+
+successMessageBtn.addEventListener("click", closeModalSuccess);
+
+modalCloseBtn.addEventListener("click", closeModal);
 
 mainForm.addEventListener("submit",function(e) {
     e.preventDefault();
-    valid = true;
 
-    checkFirstName(firstName.value);
-    checkLastName(lastName.value);
-    checkEmail(email.value);
-    checkBirthdate(birthdate.value);
-    checkQuantity(quantity.value);
-    checkLocations(locations.value);
-    checkCGU(cgu.value);
-    checkNewsletter(newsletter.value);
+    const isFormValid = checkFirstName() && checkLastName() && checkEmail() && checkBirthdate() && checkQuantity() && checkLocations() && checkCGU()
 
-    if(valid) {
+    if(isFormValid) {
         modalSuccess.style.display = "block";
     }
-    return valid;  
 });
