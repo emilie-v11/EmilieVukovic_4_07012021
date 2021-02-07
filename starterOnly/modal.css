@@ -44,6 +44,7 @@ img {
 
 .main-navbar {
     float: right;
+    margin-top: 12px;
 }
 
 .topnav a {
@@ -539,7 +540,8 @@ footer {
         background: none;
         font-size: 40px;
         border: none;
-        margin-top: 10px;
+        /* margin-top: 10px; */
+        margin-top: 0px;
     }
 
     .topnav.responsive {
@@ -550,6 +552,7 @@ footer {
         position: absolute;
         right: 0;
         top: -8px;
+        margin-top: 30px;
     }
 
     .topnav.responsive a {
@@ -568,6 +571,10 @@ footer {
     .topnav a.icon {
         float: right;
         display: block;
+    }
+
+    .topnav.responsive .icon {
+        top: 55px;
     }
 }
 
