@@ -8,8 +8,8 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const modalCloseBtn = document.querySelector(".close");
 const modalCloseBtn2 = document.querySelector(".close2");
 const modalSuccess = document.querySelector(".modal-success");
+const myTopnav = document.getElementById("myTopnav");
 const successMessageBtn = document.querySelector(".btn-success");
-const x = document.getElementById("myTopnav");
 
 const birthdateInput = document.querySelector("#birthdate");
 const cguCheckbox = document.querySelector("#checkbox1");
@@ -54,11 +54,11 @@ const quantityRegExp = /^([0-9]){1,2}$/;
  * Functions related to display and layouts
  */
 function editNav() {
-    if (x.className === "topnav") {
-        x.className += " responsive";
-        iconTopNav.style.color = "transparent";
+    if (myTopnav.className === "topnav") {
+        myTopnav.className += " responsive";
+        iconTopNav.style.color = "#ffffff";
     } else {
-        x.className = "topnav";
+        myTopnav.className = "topnav";
         iconTopNav.style.color = "#FE142F";
     }
 }
