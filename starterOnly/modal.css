@@ -32,6 +32,8 @@ img {
     padding-right: 1rem;
 }
 
+/* HEADER */
+
 .topnav {
     overflow: hidden;
     margin: 3.5%;
@@ -81,7 +83,7 @@ img {
     display: none;
 }
 
-
+/* MAIN */
 
 main {
     font-size: 130%;
@@ -115,11 +117,7 @@ main {
     font-size: 25px;
 }
 
-.footer {
-    margin: 20px;
-    padding: 10px;
-    font-family: var(--font-slab);
-}
+
 
 /* Modal form */
 
@@ -506,6 +504,19 @@ input.data-error-visible {
     padding: 0;
 }
 
+.hero-section>.btn-signup {
+    display: none;
+}
+
+/* FOOTER */
+
+footer {
+    font-family: var(--font-slab);
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 0 20px;
+}
+
 .copyrights {
     color: #fe142f;
     padding: 0;
@@ -514,16 +525,7 @@ input.data-error-visible {
     font-weight: bolder;
 }
 
-.hero-section>.btn-signup {
-    display: none;
-}
-
-footer {
-    padding-left: 2vw;
-    padding-right: 2vw;
-    margin: 0 20px;
-}
-
+/* RESPONSIVE */
 @media screen and (max-width: 992px) {
     .topnav a {
         display: none;
@@ -540,7 +542,6 @@ footer {
         background: none;
         font-size: 40px;
         border: none;
-        /* margin-top: 10px; */
         margin-top: 0px;
     }
 
@@ -670,6 +671,9 @@ footer {
     }
 }
 
+/** ANIMATION 
+* opening modal
+*/
 @keyframes modalopen {
     from {
         opacity: 0;

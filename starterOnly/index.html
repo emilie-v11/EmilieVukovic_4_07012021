@@ -2,31 +2,49 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- website page's title -->
     <title>Reservation</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
+
+    <!-- link for font-awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- link for google font -->
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+    <!-- link favicon website -->
+    
+    <!-- link for modal CSS -->
+    <link rel="stylesheet" href="modal.css" />
 </head>
 
 <body>
-    <div class="topnav" id="myTopnav">
+    <!-- start header -->
+    <header class="topnav" id="myTopnav">
+        <!-- header logo -->
         <div class="header-logo">
+            <!-- logo -->
             <img alt="logo" src="Logo.png" width="auto" height="auto" />
         </div>
+        <!-- main Navbar -->
         <div class="main-navbar">
             <a href="#" class="active"><span>Détails de l'évènement</span></a>
             <a href="#"><span>À propos</span></a>
             <a href="#"><span>Contact</span></a>
             <a href="#"><span>Évènements passés</span></a>
+            <!-- topNav toggler icon - menu hidden in mobile version --> 
             <a href="javascript:void(0);" class="icon" onclick="editNav()">
+                <!-- topNav icon -->
                 <i class="fa fa-bars"></i>
             </a>
         </div>
-    </div>
+    </header>
+    <!-- end header -->
 
+    <!-- start main -->
     <main>
+        <!-- start hero-section - jumbotron-->
         <div class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-headline">
@@ -37,6 +55,8 @@
                     Vous aimez jouer ? Notre prochain évènement gaming est ouvert
                     aux réservations... Places limitées !
                 </p>
+                <!-- button call-to-action: display the modal form for reservation -->
+                <!-- display:block in large screen >=1024px // display:none in small screen < 1024px  -->
                 <button class="btn-signup modal-btn">
                     Je m'inscris
                 </button>
@@ -44,59 +64,81 @@
             <div class="hero-img">
                 <img src="./bg_img.jpg" alt="img" />
             </div>
+            <!-- button call-to-action: display the modal form for reservation -->
+            <!-- display:block in small screen < 1024px // display:none in large screen >=1024px  -->
             <button class="btn-signup modal-btn">
                 Je m'inscris
             </button>
         </div>
+        <!-- end hero-section -->
 
+        <!-- start bground -->
         <div class="bground">
             <div class="content">
                 <span class="close"></span>
+                <!-- start modal form -->
                 <div class="modal-body">
-                    <!-- Form for reservation -->
+                    <!-- start main-form for reservation -->
                     <form class="main-form" name="reserve" action="#" method="post">
 
+                        <!-- start form fields firstName - required-->
                         <div class="formData">
                             <label for="first">Prénom</label><br>
                             <input class="text-control" type="text" id="first" name="first"/><br>
+                            <!-- start errorMessage -->
                             <span role="alert" class="error-message error-first" aria-hidden="true" >
                                 Veuillez entrer un prénom valide, 2 caractères ou plus.
                             </span>
                         </div>
+                        <!-- end form fields firstName -->
 
+                        <!-- start form fields lastName - required-->
                         <div class="formData">
                             <label for="last">Nom</label><br>
                             <input class="text-control" type="text" id="last" name="last"/><br>
+                            <!-- start errorMessage -->
                             <span role="alert" class="error-message error-last" aria-hidden="true" >
                                 Veuillez entrer un nom valide, 2 caractères ou plus.
                             </span>
                         </div>
+                        <!-- end form fields lastName -->
 
+                        <!-- start form fields email - required-->
                         <div class="formData">
                             <label for="email">E-mail</label><br>
                             <input class="text-control" type="email" id="email" name="email"/><br>
+                            <!-- start errorMessage -->
                             <span role="alert" class="error-message error-email" aria-hidden="true" >
                                 Veuillez entrer un email valide.
                             </span>
                         </div>
+                        <!-- end form fields email -->
 
+                        <!-- start form fields birthdate - required-->
                         <div class="formData">
                             <label for="birthdate">Date de naissance</label><br>
                             <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+                            <!-- start errorMessage -->
                             <span role="alert" class="error-message error-birthdate" aria-hidden="true" >
                                 Veuillez entrer une date de naissance au format JJ/MM/AAAA.
                             </span>
                         </div>
+                        <!-- end form fields birthdate -->
 
+                        <!-- start form fields quantity - required-->
                         <div class="formData">
                             <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                             <input type="number" class="text-control" id="quantity" name="quantity">
+                            <!-- start errorMessage -->
                             <span role="alert" class="error-message error-quantity" aria-hidden="true" >
                                 Veuillez entrer un chiffre ou un nombre compris entre 0 et 99.
                             </span>
                         </div>
+                        <!-- end form fields quantity -->
 
+                        <!-- start form fields location -->
                         <p class="text-label">Quelle ville ?</p>
+                        <!-- location's radios - not checked by default - required -->
                         <div class="formData">
                             <input class="checkbox-input" type="radio" id="location1" name="location"
                                 value="New York" />
@@ -125,23 +167,28 @@
                             <label class="checkbox-label" for="location6">
                                 <span class="checkbox-icon"></span>
                                 Portland</label>
+                            <!-- start errorMessage --> 
                             <span role="alert" class="error-message error-locations" aria-hidden="true" >
                                 Veuillez choisir une ville.
                             </span>
                         </div>
+                        <!-- end form fields location -->
 
+                        <!-- start form fields CGU & newsletter-->
                         <div class="formData">
-                            <!-- Not checked by default -->
+                            <!-- CGU - Checkbox1 not checked by default - required -->
                             <input class="checkbox-input" type="checkbox" id="checkbox1" />
                             <label class="checkbox2-label" for="checkbox1">
                                 <span class="checkbox-icon"></span>
                                 J'ai lu et accepté les conditions d'utilisation.
                             </label>
                             <br>
+                            <!-- start errorMessage -->
                             <span role="alert" class="error-message error-cgu" aria-hidden="true" >
                                 Veuillez accepter les conditions d'utilisation.
                             </span>
-                            <!-- Not checked by default - not required -->
+
+                            <!-- newsletter - Checkbox2 not checked by default - not required => no errorMessage -->
                             <input class="checkbox-input" type="checkbox" id="checkbox2" />
                             <label class="checkbox2-label" for="checkbox2">
                                 <span class="checkbox-icon"></span>
@@ -149,13 +196,19 @@
                             </label>
                             <br>
                         </div>
+                        <!-- end form fields CGU & newsletter-->
+
                         <!-- button for submit the reservation form -->
                         <input class="button btn-submit" type="submit" value="C'est parti" />
                     </form>
+                    <!-- end main-form -->
                 </div>
+                <!-- end modal form -->
+                <!-- start modal success -->
                 <div class="modal-success">
                     <span class="close close2"></span>
                     <div class="success-content">
+                        <!-- success message -->
                         <p> 
                             Félicitation !<br/> 
                             Votre réservation a réussi !
@@ -163,18 +216,23 @@
                         <input class="button btn-success" type="button" value="Fermer"/>
                     </div>
                 </div>
+                <!-- end modal success -->
             </div>
         </div>
+        <!-- end bground -->
     </main>
+    <!-- end main -->
 
+    <!-- start footer -->
     <footer>
         <p class="copyrights">
             Copyright 2014 - 2020, GameOn Inc.
         </p>
     </footer>
+    <!-- end footer -->
 
+    <!-- link for modal Javascript  -->
     <script src="modal.js"></script>
 
 </body>
-
 </html>
