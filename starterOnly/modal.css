@@ -565,17 +565,41 @@ footer {
 }
 
 @media screen and (max-width: 540px) {
+    .header-logo img {
+        width: 200px;
+    }
+
+    .main-navbar {
+        margin-top: 5px;
+    }
+
     .topnav a {
         display: none;
+    }
+
+    .topnav.responsive a {
+        margin-top: 0px;
     }
 
     .topnav a.icon {
         float: right;
         display: block;
+        font-size: 30px;
     }
 
     .topnav.responsive .icon {
-        top: 55px;
+        top: 45px;
+        margin-top: 7px;
+    }
+
+    .bground {
+        background-color: rgba(26, 39, 156, 0);
+        height: 90vh;
+        top: 80px;
+    }
+
+    .copyrights {
+        font-size: 0.8rem;
     }
 }
 
