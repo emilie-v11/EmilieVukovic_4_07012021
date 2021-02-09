@@ -30,6 +30,7 @@ p {
 
 img {
     padding-right: 1rem;
+    width: 277px;
 }
 
 /* HEADER */
@@ -527,6 +528,9 @@ footer {
 
 /* RESPONSIVE */
 @media screen and (max-width: 992px) {
+    .header-logo img {
+        padding-left: 10px;
+    }
     .topnav a {
         display: none;
     }
@@ -566,7 +570,12 @@ footer {
 
 @media screen and (max-width: 540px) {
     .header-logo img {
-        width: 200px;
+        width: 150px;
+    }
+
+    .topnav {
+        margin-top: 5%;
+        margin-bottom: 5%;
     }
 
     .main-navbar {
@@ -584,18 +593,19 @@ footer {
     .topnav a.icon {
         float: right;
         display: block;
-        font-size: 30px;
+        font-size: 25px;
+        padding-top: 10px;
     }
 
     .topnav.responsive .icon {
         top: 45px;
-        margin-top: 7px;
+        margin-top: 0px;
     }
 
     .bground {
         background-color: rgba(26, 39, 156, 0);
         height: 90vh;
-        top: 80px;
+        top: 65px;
     }
 
     .copyrights {
